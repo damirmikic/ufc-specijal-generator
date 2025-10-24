@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMA Odds Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🥊 MMA Odds Generator</h1>
+            <p>Fetch UFC/MMA matches and betting odds, export to CSV</p>
+        </header>
+
+        <div class="controls">
+            <button id="fetchBtn" class="btn btn-primary">
+                <span class="btn-text">Fetch Matches</span>
+                <span class="spinner" id="spinner"></span>
+            </button>
+            <button id="previewBtn" class="btn btn-info" disabled>Preview CSV</button>
+            <button id="exportBtn" class="btn btn-secondary" disabled>Export to CSV</button>
+            <button id="clearBtn" class="btn btn-danger">Clear Data</button>
+        </div>
+
+        <div class="match-selector" id="matchSelector" style="display: none;">
+            <label for="matchDropdown">Select a match to view odds:</label>
+            <select id="matchDropdown" class="match-dropdown">
+                <option value="">Choose a match...</option>
+            </select>
+            <button id="fetchOddsBtn" class="btn btn-primary" disabled>
+                <span class="btn-text">Get Odds</span>
+                <span class="spinner-odds" id="spinnerOdds"></span>
+            </button>
+        </div>
+
+        <div class="stats" id="stats" style="display: none;">
+            <div class="stat-item">
+                <span class="stat-label">Matches Found:</span>
+                <span class="stat-value" id="matchCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Selected Match:</span>
+                <span class="stat-value" id="selectedMatch">None</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Markets in CSV:</span>
+                <span class="stat-value" id="csvMarketCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Last Updated:</span>
+                <span class="stat-value" id="lastUpdated">-</span>
+            </div>
+        </div>
+
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Fetching matches...</div>
+        </div>
+
+        <div class="csv-preview" id="csvPreview" style="display: none;">
+            <div class="preview-header">
+                <h3>CSV Preview</h3>
+                <div class="preview-controls">
+                    <button id="editModeBtn" class="btn btn-info btn-small">Enable Edit</button>
+                    <button id="saveChangesBtn" class="btn btn-success btn-small" style="display: none;">Save Changes</button>
+                    <button id="closePreviewBtn" class="btn btn-danger btn-small">×</button>
+                </div>
+            </div>
+            <div class="preview-table-container">
+                <table id="previewTable" class="preview-table"></table>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <div class="no-data" id="noData">
+                <p>Click "Fetch Matches & Odds" to load current MMA betting data</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
